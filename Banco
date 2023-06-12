@@ -1,0 +1,188 @@
+use OficinaAutopeca;
+
+create table estoque(
+cod int primary key auto_increment,
+nome varchar(50) not null,
+marca varchar(50) not null,
+codForn int not null,
+valor float not null,
+valorForn float not null,
+valorMin float not null
+);
+
+create table cadastro_veiculo(
+placa varchar(7) not null unique,
+cor varchar(50) not null,
+fabricacao char(4) not null,
+km int not null,
+modelo varchar(50) not null,
+observacoes varchar(255),
+servicos varchar(255),
+pecas varchar(255) not null,
+proprietario varchar(50) not null,
+cod int not null,
+cpf char(11) not null,
+marca varchar(50) not null,
+combustivel varchar(15) not null,
+veiculo varchar(20) not null,
+ar varchar(3) not null
+);
+
+create table gasto(
+despPlan float,
+despReal float,
+despGasto float not null,
+despDiferenca float,
+data_gasto date not null
+);
+
+create table cadastroFuncionarios(
+nome varchar(50) not null,
+data_nascimento date not null,
+email varchar(50) not null,
+cpf char(11) not null,
+rg char(8) not null,
+sexo varchar(20) not null,
+celular char(11) not null,
+cep char(8) not null,
+endereco varchar(50) not null,
+uf char(2) not null,
+cidade varchar(50),
+bairro varchar(50),
+numero int not null,
+complemento varchar(50),
+cargo varchar(50) not null,
+convenio int not null,
+dt_emisao date not null,
+dt_adimicao date not null,
+inicio_vigencia date not null,
+status_funcionario varchar(20) not null,
+banco varchar(50) not null,
+conta int not null,
+agencia int not null,
+desligamento date
+);
+
+create table cadastroCliente(
+nome varchar(50) not null,
+dtNascimento date not null,
+celular char(11) not null,
+email varchar(50),
+cpf char(11) not null,
+rg char(8) not null,
+sexo varchar(20) not null,
+produtorRural varchar(3) not null,
+cep char(8),
+endereco varchar(255) not null,
+uf char(2) not null,
+cidade varchar(255),
+bairro varchar(255),
+numero int not null,
+complemento varchar(255),
+observacoes varchar(255),
+id int primary key auto_increment
+);
+
+create table ordem_servicos(
+n_os int primary key auto_increment,
+id int,
+nome varchar(50) not null,
+email varchar(50),
+endereco varchar(50) not null,
+telefone char(11) not null,
+marca varchar(50) not null,
+modelo varchar(50) not null,
+ano char(4) not null,
+placa varchar(7) not null,
+km int not null,
+tecnico varchar(50) not null,
+horas_estimadas time not null,
+valor float not null,
+pecas varchar(255) not null,
+valor_pecas float not null,
+descricao varchar(255) not null,
+data_abertura date not null,
+horas_abertura time not null,
+total float not null
+);
+
+create table renda(                                                                                     
+renda_plan float,
+renda_real float,
+renda_ganho float not null,
+renda_diferenca float,
+data_renda date not null
+);
+
+create table cancelar_os(
+id int not null,
+data_cancelamento date not null,
+hora_cancelamento time not null,
+motivo varchar(255),
+detalhes varchar(255)
+);
+
+create table comprar(
+n_pedido int primary key not null,
+Dt_compra date not null,
+hora time not null,
+produto varchar(50) not null,
+fornecedor varchar(50) not null,
+quantidade int not null,
+valor float not null,
+qnt_estoque int not null,
+total float not null
+);
+
+Create table emitir_os(
+Id int,
+Nome varchar(50),
+Email varchar(50),
+Endereço varchar(50),
+Telefone char(11),
+Marca varchar(50),
+Modelo varchar(50),
+Ano char(4),
+Placa varchar(7),
+Km int,
+Tecnico varchar(50),
+Horas_trabalhadas time,
+Hora_emissao time,
+Data_emissao date,
+Pecas varchar(255),
+Descrição varchar(255),
+N_os int,
+Total float,
+Assinatura varchar(50)
+);
+
+Create table relatório_os(
+Id int,
+Nome varchar(50),
+Email varchar(50),
+Endereço varchar(50),
+Telefone char(11),
+Marca varchar(50),
+Modelo varchar(50),
+Ano char(4),
+Placa varchar(7),
+Km int,
+Tecnico varchar(50),
+Horas_trabalhadas time,
+Valor float,
+Status  varchar(50),
+pecas varchar(255),
+descricao varchar(255),
+valor_pecas float,
+n_os int,
+total_os float,
+Assinatura varchar(50)
+);
+
+Create table admin(
+Login varchar(3),
+Senha char(3)
+);
+
+Insert into admin(Login, Senha) values (‘adm’, 123);
+Select * from admin;
